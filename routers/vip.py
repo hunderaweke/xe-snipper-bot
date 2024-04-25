@@ -101,6 +101,10 @@ async def pay_vip(query: CallbackQuery, callback_data: ExnessCallBack, bot: Bot)
             "USDT(TRC20)",
             Copy(copy_type="usdt_address"),
         ],
+        (
+            "PayPal",
+            Copy(copy_type="paypal"),
+        ),
     ]
     buttons = InlineKeyboardBuilder()
     for txt, var in keyboard:

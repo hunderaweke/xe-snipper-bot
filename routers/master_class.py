@@ -38,6 +38,10 @@ A big giveaway at the end of the class\nFinish Your Payment Using One of the met
             "🏦 CBE(Bank)",
             Copy(copy_type="bank_account"),
         ),
+        (
+            " PayPal",
+            Copy(copy_type="paypal"),
+        ),
     ]
     buttons = InlineKeyboardBuilder()
     for txt, var in keyboard:

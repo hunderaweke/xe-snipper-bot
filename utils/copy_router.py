@@ -35,3 +35,12 @@ async def copy_bank_account(query: CallbackQuery, callback_data: Copy, bot: Bot)
         text="TEYIBA MOHAMMED \n`1000540470573`",
         parse_mode=ParseMode.MARKDOWN,
     )
+
+
+@copy_router.callback_query(Copy.filter(F.copy_type == "paypal"))
+async def paypal_copy(query: CallbackQuery, callback_data: Copy, bot: Bot):
+    await bot.send_message(
+        chat_id=query.from_user.id,
+        text="`salsyitayew@gmail.com`",
+        parse_mode=ParseMode.MARKDOWN,
+    )

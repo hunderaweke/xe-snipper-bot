@@ -19,6 +19,10 @@ async def one_to_one(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot
             "USDT(TRC20)",
             Copy(copy_type="usdt_address"),
         ),
+        (
+            " PayPal",
+            Copy(copy_type="paypal"),
+        ),
     ]
     buttons = InlineKeyboardBuilder()
     for txt, var in keyboard:
