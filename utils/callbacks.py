@@ -11,3 +11,7 @@ class PlanCallBack(CallbackData, prefix="plan"):
 
 class ExnessCallBack(CallbackData, prefix="exness"):
     status: str
+
+
+class VIPTypeCallBack(CallbackData, prefix="vip"):
+    vip_type: str

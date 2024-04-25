@@ -1,5 +1,5 @@
 from .start import PlanCallBack
-from utils.callbacks import ExnessCallBack, Copy
+from utils.callbacks import ExnessCallBack, Copy, VIPTypeCallBack
 from magic_filter import F
 from aiogram import Bot, Router
 from aiogram.types import CallbackQuery
@@ -11,11 +11,32 @@ from aiogram.enums.chat_action import ChatAction
 vip_router = Router()
 
 
-@vip_router.callback_query(PlanCallBack.filter(F.name == "vip"))
-async def vip(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot):
+@vip_router.callback_query(VIPTypeCallBack.filter(F.vip_type == "start"))
+async def vip_start(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot):
     keyboard = [
         ("YES 👌", ExnessCallBack(status="yes")),
         ("NO  😥", ExnessCallBack(status="no")),
+    ]
+    buttons = InlineKeyboardBuilder()
+    for text, callback in keyboard:
+        buttons.button(text=text, callback_data=callback.pack())
+    query.answer()
+
+    await bot.send_message(
+        chat_id=query.from_user.id,
+        text="""XE VIP signal
+
+To join xe sniper vip signal 
+we require you to have an Exness account. do you have Exness account?""",
+        reply_markup=buttons.as_markup(),
+    )
+
+
+@vip_router.callback_query(PlanCallBack.filter(F.name == "vip"))
+async def vip(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot):
+    keyboard = [
+        ("6 Months ➡️", VIPTypeCallBack(vip_type="start")),
+        ("12 Months ➡️", VIPTypeCallBack(vip_type="start")),
     ]
     buttons = InlineKeyboardBuilder()
     for text, callback in keyboard:
@@ -31,8 +52,11 @@ async def vip(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot):
 👉🏾 XE E-BOOK 
 👉🏾 more than 90% win rate  
 
-To join xe sniper vip signal 
-we require you to have an Exness account. do you have Exness account?""",
+Get Started ➡️  
+
+With One of Our Plans
+
+""",
         reply_markup=buttons.as_markup(),
     )
 
