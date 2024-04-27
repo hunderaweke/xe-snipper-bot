@@ -11,7 +11,7 @@ from aiogram.enums.chat_action import ChatAction
 vip_router = Router()
 
 
-@vip_router.callback_query(VIPTypeCallBack.filter(F.vip_type == "start"))
+@vip_router.callback_query(PlanCallBack.filter(F.name == "vip"))
 async def vip_start(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot):
     keyboard = [
         ("YES 👌", ExnessCallBack(status="yes")),
@@ -24,19 +24,26 @@ async def vip_start(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot)
 
     await bot.send_message(
         chat_id=query.from_user.id,
-        text="""XE VIP signal
+        text="""XE VIP SIGNAL
+
+✅ GOLD QUALITY SIGNAL 
+✅ XE SNIPER E-BOOK  
+✅ LIVE TRADES
+✅ LEARN ABOUT MONEY AND RISK MANAGMENT
+💸Payment: 10$ for one Month
 
 To join xe sniper vip signal 
-we require you to have an Exness account. do you have Exness account?""",
+we require you to have an Exness account. do you have Exness account?
+ኤክስነስ አካውንት አለህ? """,
         reply_markup=buttons.as_markup(),
     )
 
 
-@vip_router.callback_query(PlanCallBack.filter(F.name == "vip"))
-async def vip(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot):
+@vip_router.callback_query(VIPTypeCallBack.filter(F.vip_type == "choose"))
+async def vip(query: CallbackQuery, callback_data: VIPTypeCallBack, bot: Bot):
     keyboard = [
-        ("6 Months ➡️", VIPTypeCallBack(vip_type="start")),
-        ("12 Months ➡️", VIPTypeCallBack(vip_type="start")),
+        ("6 Months ➡️", ExnessCallBack(status="pay")),
+        ("12 Months ➡️", ExnessCallBack(status="pay")),
     ]
     buttons = InlineKeyboardBuilder()
     for text, callback in keyboard:
@@ -69,6 +76,7 @@ async def no_exness(query: CallbackQuery, callback_data: ExnessCallBack, bot: Bo
         ("🖼️ Send Screenshot", "https://t.me/xesniper9"),
         ("💬 Contact Us", "https://t.me/xesniper9"),
         ("😎 Finish Payment", ExnessCallBack(status="pay")),
+        ("Choose Plan", VIPTypeCallBack(vip_type="choose")),
     ]
     buttons = InlineKeyboardBuilder()
     for text, var in keyboard:
@@ -90,7 +98,9 @@ async def yes_exness(query: CallbackQuery, callback_data: ExnessCallBack, bot: B
     text = "**Change your Ib\!** \nAfter you finish your verification processes \nSend your screenshot and your Exness Email to us  👉🏼 Using the Button bellow and Finish Your Payment"
     keyboard = [
         ("🖼️ Send Screenshot", "https://t.me/xesniper9"),
+        ("Partner link", "https://one.exness-track.com/a/f5l76iz61m"),
         ("😎 Finish Payment", ExnessCallBack(status="pay")),
+        ("Choose Plan", VIPTypeCallBack(vip_type="choose")),
     ]
     video = FSInputFile("description.MP4")
 
@@ -122,7 +132,7 @@ async def pay_vip(query: CallbackQuery, callback_data: ExnessCallBack, bot: Bot)
             "https://buy.stripe.com/cN24gI2SA9g5bYY8ww",
         ],
         [
-            "USDT(TRC20)",
+            "🪙 USDT(TRC20",
             Copy(copy_type="usdt_address"),
         ],
         (

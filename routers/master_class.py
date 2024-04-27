@@ -12,26 +12,22 @@ master_class_router = Router()
 async def master_class(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot):
     text = """XE Sniper Master Class Program
 
-Basic to advanced forex trading knowledge
-
-Advanced Trading Psychology
-
-Risk and money management
-
-Access our Discord community.
-
-Access a free-quality gold signal for two month
-
-24/7 student guidance
-
-A big giveaway at the end of the class\nFinish Your Payment Using One of the methods and send the screenshot to @xesniper9"""
+✅Basic to advanced forex trading knowledge
+✅Advanced Trading Psychology
+✅Risk and money management
+✅Access our Discord community
+✅Access a free-quality gold signal for one month
+✅24/7 student guidance
+✅A big giveaway at the end of the class
+✅Course duration: 3 month
+💸Payment: 80$ or 8000 for this week\nFinish Your Payment Using One of the methods and send the screenshot to @xesniper9"""
     keyboard = [
         (
             "💳 Credit Card",
             "https://buy.stripe.com/dR66oQ1Ow2RH3ssaEF",
         ),
         (
-            "📱 USDT(TRC20)",
+            "🪙 USDT(TRC20)",
             Copy(copy_type="usdt_address"),
         ),
         (
