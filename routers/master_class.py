@@ -20,7 +20,8 @@ async def master_class(query: CallbackQuery, callback_data: PlanCallBack, bot: B
 ✅24/7 student guidance
 ✅A big giveaway at the end of the class
 ✅Course duration: 3 month
-💸Payment: 80$ or 8000 for this week\nFinish Your Payment Using One of the methods and send the screenshot to @xesniper9"""
+💸Payment: 100$ or 10000
+Finish Your Payment Using One of the methods and send the screenshot to @xesniper9"""
     keyboard = [
         (
             "💳 Credit Card",

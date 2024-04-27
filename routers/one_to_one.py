@@ -44,7 +44,8 @@ async def one_to_one(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot
 ✅A big giveaway at the end of the class
 ✅Get Xe Sniper Digital Certificate
 ✅Course duration: 1 month and 15 days
-💸Payment: 500$\n
+💸Payment: 700$
+
 Finish Your Payment Using One of the methods and send the screenshot to @xesniper9""",
         reply_markup=buttons.as_markup(),
     )

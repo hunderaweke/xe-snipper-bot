@@ -48,7 +48,7 @@ async def vip(query: CallbackQuery, callback_data: VIPTypeCallBack, bot: Bot):
     buttons = InlineKeyboardBuilder()
     for text, callback in keyboard:
         buttons.button(text=text, callback_data=callback.pack())
-    query.answer()
+    buttons.adjust(1, repeat=True)
 
     await bot.send_message(
         chat_id=query.from_user.id,
@@ -63,6 +63,9 @@ Get Started ➡️
 
 With One of Our Plans
 
+For 6 month - 50$
+For 12 month - 100$
+
 """,
         reply_markup=buttons.as_markup(),
     )
@@ -75,8 +78,7 @@ async def no_exness(query: CallbackQuery, callback_data: ExnessCallBack, bot: Bo
         ("Create Exness Account", "https://one.exness-track.com/a/f5l76iz61m"),
         ("🖼️ Send Screenshot", "https://t.me/xesniper9"),
         ("💬 Contact Us", "https://t.me/xesniper9"),
-        ("😎 Finish Payment", ExnessCallBack(status="pay")),
-        ("Choose Plan", VIPTypeCallBack(vip_type="choose")),
+        ("😎 Finish Payment", VIPTypeCallBack(vip_type="choose")),
     ]
     buttons = InlineKeyboardBuilder()
     for text, var in keyboard:
@@ -99,8 +101,7 @@ async def yes_exness(query: CallbackQuery, callback_data: ExnessCallBack, bot: B
     keyboard = [
         ("🖼️ Send Screenshot", "https://t.me/xesniper9"),
         ("Partner link", "https://one.exness-track.com/a/f5l76iz61m"),
-        ("😎 Finish Payment", ExnessCallBack(status="pay")),
-        ("Choose Plan", VIPTypeCallBack(vip_type="choose")),
+        ("😎 Finish Payment", VIPTypeCallBack(vip_type="choose")),
     ]
     video = FSInputFile("description.MP4")
 
@@ -132,7 +133,7 @@ async def pay_vip(query: CallbackQuery, callback_data: ExnessCallBack, bot: Bot)
             "https://buy.stripe.com/cN24gI2SA9g5bYY8ww",
         ],
         [
-            "🪙 USDT(TRC20",
+            "🪙 USDT(TRC20)",
             Copy(copy_type="usdt_address"),
         ],
         (
