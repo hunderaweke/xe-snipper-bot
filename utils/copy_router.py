@@ -41,6 +41,6 @@ async def copy_bank_account(query: CallbackQuery, callback_data: Copy, bot: Bot)
 async def paypal_copy(query: CallbackQuery, callback_data: Copy, bot: Bot):
     await bot.send_message(
         chat_id=query.from_user.id,
-        text="👇 Here is the Paypal Email 📬:\n\n`salsyitayew@gmail.com`\nFinish the payment and send screenshot to @xesniper9",
+        text="👇 Here is the Paypal Email 📬:\n\n`salsyitayew@gmail.com`\n\nFinish the payment and send screenshot to @xesniper9",
         parse_mode=ParseMode.MARKDOWN,
     )
