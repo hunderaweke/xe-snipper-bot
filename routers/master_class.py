@@ -36,7 +36,7 @@ Finish Your Payment Using One of the methods and send the screenshot to @xesnipe
             Copy(copy_type="bank_account"),
         ),
         (
-            " PayPal",
+            "✅ PayPal",
             Copy(copy_type="paypal"),
         ),
     ]

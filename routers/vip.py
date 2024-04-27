@@ -58,7 +58,7 @@ async def vip(query: CallbackQuery, callback_data: VIPTypeCallBack, bot: Bot):
 ✅ XE SNIPER E-BOOK  
 ✅ LIVE TRADES
 ✅ LEARN ABOUT MONEY AND RISK MANAGMENT
-✅ MORE THAN 90% WIN RATE
+✅ ssMORE THAN 90% WIN RATE
 
 Get Started ➡️  
 
@@ -138,7 +138,7 @@ async def pay_vip(query: CallbackQuery, callback_data: ExnessCallBack, bot: Bot)
             Copy(copy_type="usdt_address"),
         ],
         (
-            "PayPal",
+            "✅ PayPal",
             Copy(copy_type="paypal"),
         ),
     ]

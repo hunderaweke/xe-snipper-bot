@@ -16,11 +16,11 @@ async def one_to_one(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot
             "https://buy.stripe.com/7sI9B264Mdwl4ww146",
         ),
         (
-            "USDT(TRC20)",
+            "🪙 USDT(TRC20)",
             Copy(copy_type="usdt_address"),
         ),
         (
-            " PayPal",
+            "✅ PayPal",
             Copy(copy_type="paypal"),
         ),
     ]
