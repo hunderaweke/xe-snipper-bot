@@ -58,7 +58,7 @@ async def vip(query: CallbackQuery, callback_data: VIPTypeCallBack, bot: Bot):
 ✅ XE SNIPER E-BOOK  
 ✅ LIVE TRADES
 ✅ LEARN ABOUT MONEY AND RISK MANAGMENT
-✅ ssMORE THAN 90% WIN RATE
+✅ MORE THAN 90% WIN RATE
 
 Get Started ➡️  
 
