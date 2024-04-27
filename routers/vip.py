@@ -52,12 +52,13 @@ async def vip(query: CallbackQuery, callback_data: VIPTypeCallBack, bot: Bot):
 
     await bot.send_message(
         chat_id=query.from_user.id,
-        text="""XE VIP signa
+        text="""XE VIP SIGNAL
 
-👉🏾 LIVE TRADE 
-👉🏾 daily signals  
-👉🏾 XE E-BOOK 
-👉🏾 more than 90% win rate  
+✅ GOLD QUALITY SIGNAL 
+✅ XE SNIPER E-BOOK  
+✅ LIVE TRADES
+✅ LEARN ABOUT MONEY AND RISK MANAGMENT
+✅ MORE THAN 90% WIN RATE
 
 Get Started ➡️  
 
