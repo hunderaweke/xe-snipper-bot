@@ -1,23 +1,26 @@
-from utils.callbacks import PlanCallBack
 from aiogram import Bot, Router, F
-from aiogram.filters import CommandStart
+from aiogram.filters import Command
 from aiogram.types import Message
+from aiogram.fsm.state import StatesGroup, State
+from aiogram.fsm.context import FSMContext
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.types.keyboard_button import KeyboardButton
 from aiogram.types.reply_keyboard_markup import ReplyKeyboardMarkup
+from utils.callbacks import PlanCallBack
+
+from utils.states import BaseStates
 
 start_router = Router()
 
 
-@start_router.message(F.text == "/start")
-async def start(message: Message, bot: Bot):
+@start_router.message(Command("start"))
+async def start(message: Message, state: FSMContext, bot: Bot):
     menu_buttons = [
         [
             KeyboardButton(text="♻️ Start Over"),
-            KeyboardButton(text="📞 Contact"),
+            KeyboardButton(text="🛣 Show Plans"),
         ],
         [
-            KeyboardButton(text="🛣 Show Plans"),
             KeyboardButton(text="📩 Support"),
         ],
     ]
@@ -26,14 +29,15 @@ async def start(message: Message, bot: Bot):
         is_persistent=True,
         resize_keyboard=True,
     )
-    await message.reply(
-        text="Welcome to our XE SNIPER Subscription Bot", reply_markup=markup
-    )
+    await state.set_state(BaseStates.MAIN_MENU)
+    await message.reply(text="Welcome", reply_markup=markup)
+    await show_plans(message, bot, state)
 
 
 @start_router.message(F.text == "♻️ Start Over")
 @start_router.message(F.text == "🛣 Show Plans")
-async def show_plans(message: Message, bot: Bot):
+async def show_plans(message: Message, bot: Bot, state: FSMContext):
+    await state.clear()
     keyboard = [
         ("😎 VIP plan", PlanCallBack(name="vip")),
         ("🎒  Master Class", PlanCallBack(name="master")),

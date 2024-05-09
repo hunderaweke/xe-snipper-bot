@@ -15,3 +15,7 @@ class ExnessCallBack(CallbackData, prefix="exness"):
 
 class VIPTypeCallBack(CallbackData, prefix="vip"):
     vip_type: str
+
+
+class ReturnBackCallback(CallbackData, prefix="back"):
+    status: str

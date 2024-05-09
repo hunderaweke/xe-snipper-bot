@@ -2,26 +2,37 @@ from .start import PlanCallBack
 from utils.callbacks import ExnessCallBack, Copy, VIPTypeCallBack
 from magic_filter import F
 from aiogram import Bot, Router
+from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery
 from aiogram.types.input_file import FSInputFile
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.enums.parse_mode import ParseMode
 from aiogram.enums.chat_action import ChatAction
 
+
+from utils.states import BaseStates
+from utils.callbacks import ReturnBackCallback
+
 vip_router = Router()
 
 
 @vip_router.callback_query(PlanCallBack.filter(F.name == "vip"))
-async def vip_start(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot):
+async def vip_start(
+    query: CallbackQuery, callback_data: PlanCallBack, bot: Bot, state: FSMContext
+):
     keyboard = [
         ("YES 👌", ExnessCallBack(status="yes")),
         ("NO  😥", ExnessCallBack(status="no")),
+        ("🔙 Back", ReturnBackCallback(status="back")),
     ]
     buttons = InlineKeyboardBuilder()
     for text, callback in keyboard:
         buttons.button(text=text, callback_data=callback.pack())
-    query.answer()
-
+    await state.clear()
+    await state.set_state(BaseStates.MASTER_CLASS)
+    await bot.delete_message(
+        chat_id=query.from_user.id, message_id=query.message.message_id
+    )
     await bot.send_message(
         chat_id=query.from_user.id,
         text="""XE VIP SIGNAL
@@ -141,6 +152,10 @@ async def pay_vip(query: CallbackQuery, callback_data: ExnessCallBack, bot: Bot)
             "✅ PayPal",
             Copy(copy_type="paypal"),
         ),
+        (
+            "🔙 Back",
+            ReturnBackCallback(status="back"),
+        ),
     ]
     buttons = InlineKeyboardBuilder()
     for txt, var in keyboard:
@@ -149,6 +164,9 @@ async def pay_vip(query: CallbackQuery, callback_data: ExnessCallBack, bot: Bot)
         else:
             buttons.button(text=txt, callback_data=var)
     buttons.adjust(1, repeat=True)
+    await bot.delete_message(
+        chat_id=query.from_user.id, message_id=query.message.message_id
+    )
     await bot.send_message(
         chat_id=query.from_user.id,
         text=text,

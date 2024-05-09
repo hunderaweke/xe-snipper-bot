@@ -2,14 +2,22 @@ from aiogram import Router
 from utils.callbacks import Copy, PlanCallBack
 from magic_filter import F
 from aiogram import Bot
+from aiogram.fsm.context import FSMContext
 from aiogram.types.callback_query import CallbackQuery
 from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+from utils.states import BaseStates
+from utils.callbacks import ReturnBackCallback
 
 one_to_one_router = Router()
 
 
 @one_to_one_router.callback_query(PlanCallBack.filter(F.name == "one_to_one"))
-async def one_to_one(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot):
+async def one_to_one(
+    query: CallbackQuery, callback_data: PlanCallBack, bot: Bot, state: FSMContext
+):
+    await state.clear()
+    await state.set_state(BaseStates.ONE_TO_ONE)
     keyboard = [
         (
             "💳 Credit Card",
@@ -23,6 +31,10 @@ async def one_to_one(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot
             "✅ PayPal",
             Copy(copy_type="paypal"),
         ),
+        (
+            "🔙 Back",
+            ReturnBackCallback(status="back"),
+        ),
     ]
     buttons = InlineKeyboardBuilder()
     for txt, var in keyboard:
@@ -31,6 +43,9 @@ async def one_to_one(query: CallbackQuery, callback_data: PlanCallBack, bot: Bot
         else:
             buttons.button(text=txt, callback_data=var)
     buttons.adjust(1, repeat=True)
+    await bot.delete_message(
+        chat_id=query.from_user.id, message_id=query.message.message_id
+    )
     await bot.send_message(
         chat_id=query.from_user.id,
         text="""XE Sniper One to One Mentorship Program
