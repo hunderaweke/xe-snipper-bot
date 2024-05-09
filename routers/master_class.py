@@ -34,6 +34,10 @@ Finish Your Payment Using One of the methods and send the screenshot to @xesnipe
             "https://buy.stripe.com/dR66oQ1Ow2RH3ssaEF",
         ),
         (
+            "Ziina",
+            "https://pay.ziina.com/xesniper/CZvVuopAG",
+        ),
+        (
             "🪙 USDT(TRC20)",
             Copy(copy_type="usdt_address"),
         ),

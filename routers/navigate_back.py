@@ -3,6 +3,7 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.context import FSMContext
 
 from .start import show_plans
+from .one_to_one import one_to_one
 from utils.states import BaseStates
 from utils.callbacks import ReturnBackCallback
 
@@ -19,3 +20,5 @@ async def back(
     )
     if curr_state in {BaseStates.ONE_TO_ONE, BaseStates.VIP, BaseStates.MASTER_CLASS}:
         await show_plans(query.message, bot, state)
+    elif curr_state == BaseStates.ONE_TO_ONE_COPY:
+        await one_to_one(query, callback_data, bot, state)

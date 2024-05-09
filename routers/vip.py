@@ -144,6 +144,14 @@ async def pay_vip(query: CallbackQuery, callback_data: ExnessCallBack, bot: Bot)
             "💳 Credit Card",
             "https://buy.stripe.com/cN24gI2SA9g5bYY8ww",
         ],
+        (
+            "Half Year Payment",
+            "https://pay.ziina.com/xesniper/knBdBdn56",
+        ),
+        (
+            "Full Year Payment",
+            "https://pay.ziina.com/xesniper/kNz3d6BBj",
+        ),
         [
             "🪙 USDT(TRC20)",
             Copy(copy_type="usdt_address"),

@@ -32,6 +32,10 @@ async def one_to_one(
             Copy(copy_type="paypal"),
         ),
         (
+            "Ziina",
+            "https://pay.ziina.com/xesniper/qHUMN-cfi",
+        ),
+        (
             "🔙 Back",
             ReturnBackCallback(status="back"),
         ),

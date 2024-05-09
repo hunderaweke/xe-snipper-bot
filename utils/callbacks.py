@@ -1,3 +1,4 @@
+from aiogram.fsm.state import State
 from aiogram.filters.callback_data import CallbackData
 
 

@@ -6,3 +6,4 @@ class BaseStates(StatesGroup):
     ONE_TO_ONE = State()
     VIP = State()
     MASTER_CLASS = State()
+    ONE_TO_ONE_COPY = State()
